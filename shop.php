@@ -30,11 +30,7 @@
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
-<?php while ($row = $stmt->fetch()) {
-   echo $row->stockNo . 'stock';
-   echo $row->description . 'stock';
-   echo $row->price . 'stock';
- } ?>
+
 
 
             <?php
