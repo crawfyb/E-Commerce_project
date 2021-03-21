@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title></title>
+</head>
+
+<?php
+if (isset($_SESSION['userID'])) {
+
+  $userID = $_SESSION['userID'];
+
+  $stmt = $pdo -> prepare('SELECT * FROM emembers WHERE id = ?');
+  $stmt -> execute([$userID]);
+
+  $user = $stmt -> fetch();
+
+
+}
+?>
+<body>
+
+  <nav>
+
+
+    <ul>
+      <li> <a href="index.php">Home</a></li>
+      <li> <a href="shop.php">Shop</a></li>
+    </ul>
+
+
+      <h3>ECOM WATER SPORT</h3>
+
+      <div class="dropdown">
+        <?php if(isset($user)) { ?>
+        <button class="dropbtn"><?php echo $user->forename ?></button>
+        <div class="dropdown-content">
+          <a href="cart.php">Checkout</a>
+          <a href="update.php">Update Info</a>
+          <a href="logout.php">Logout</a>
+        </div>
+      <?php  }   else { ?>
+        <button class="dropbtn">Guest</button>
+        <div class="dropdown-content">
+        <li> <a href="register.php">Register</a></li>
+        <li> <a href="login.php">Login</a></li>
+        <?php } ?>
+      </div>
+
+
+
+  </nav>
