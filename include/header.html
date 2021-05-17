@@ -21,37 +21,53 @@ if (isset($_SESSION['userID'])) {
   $user = $stmt -> fetch();
 
 
-}
+};
 ?>
 <body>
-
+<header>
+  <div class="overlay"></div>
   <nav>
-
 
     <ul>
       <li> <a href="index.php">Home</a></li>
       <li> <a href="shop.php">Shop</a></li>
+      
     </ul>
 
 
       <h3>ECOM WATER SPORT</h3>
 
       <div class="dropdown">
-        <?php if(isset($user)) { ?>
-        <button class="dropbtn"><?php echo $user->forename ?></button>
-        <div class="dropdown-content">
-          <a href="cart.php">Checkout</a>
-          <a href="update.php">Update Info</a>
-          <a href="logout.php">Logout</a>
-        </div>
-      <?php  }   else { ?>
-        <button class="dropbtn">Guest</button>
-        <div class="dropdown-content">
-        <li> <a href="register.php">Register</a></li>
-        <li> <a href="login.php">Login</a></li>
-        <?php } ?>
+
+
+        <?php
+
+          if(   isset($user) && is_object($user) ){
+            echo '<button class="dropbtn">';
+
+            echo $user->forename;
+
+            echo '</button>
+            <div class="dropdown-content">
+              <a href="update.php">Update Info</a>
+              <a href="logout.php">Logout</a>
+            </div>';
+
+
+          } else {
+            echo '<button class="dropbtn">Guest</button>
+            <div class="dropdown-content">
+              <li> <a href="register.php">Register</a></li>
+              <li> <a href="login.php">Login</a></li>';
+        };  ?>
+      </div>
+
+
       </div>
 
 
 
   </nav>
+</header>
+<script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>

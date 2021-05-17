@@ -41,6 +41,9 @@
         <div class="card-body">
           <?php if (isset($user)) { ?>
             <h5>Welcome <?php echo $message ?></h5>
+            <div>
+            <img src="./images/<?php echo $user->catagory ?>.png" >
+            </div>
         <?php  } else { ?>
           <h4>please login</h4>
         <?php } ?>
